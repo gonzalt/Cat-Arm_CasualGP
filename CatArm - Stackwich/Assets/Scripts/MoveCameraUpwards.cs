@@ -28,7 +28,8 @@ public class MoveCameraUpwards : MonoBehaviour
 
     public int i = 0;
 
-	//public PauseMenuScript other;
+	public PauseMenuScript someScriptHolder;
+
 
 
     // Start is called before the first frame update
@@ -57,7 +58,7 @@ public class MoveCameraUpwards : MonoBehaviour
 		if (Input.GetButtonDown("Fire1"))
 		{
 
-			/*if (other.gameIsPaused == false)
+			if (someScriptHolder.gameIsPaused == false)
 			{
 				startPosition = startPosition + aimedPosition;
 
@@ -71,7 +72,7 @@ public class MoveCameraUpwards : MonoBehaviour
 
 				//placedIngredient = false;
 			}
-			*/
+			
 
 		}
 	

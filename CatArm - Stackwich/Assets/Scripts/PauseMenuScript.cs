@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaunseMenuScript : MonoBehaviour
+public class PauseMenuScript : MonoBehaviour
 {
 
 
-    public static bool gameIsPaused = false;
+    public bool gameIsPaused = false;
 
     public GameObject pauseMenuUI;
 
