@@ -11,15 +11,23 @@ public class GameManager : MonoBehaviour
     private CubeSpawner currentSpawner;
 	public PauseMenuScript someScriptHolder;
 
+
+
+	public int missCount = 0;
+
+
+
+
 	private void Awake()
     {
         spawners = FindObjectsOfType<CubeSpawner>();
     }
+
     private void Update()
     {
-		if (someScriptHolder.gameIsPaused == false)
+		if (Input.GetButtonDown("Fire1"))
 		{
-			if (Input.GetButtonDown("Fire1"))
+			if (someScriptHolder.gameIsPaused == false)
 			{
 				if (MovingCube.CurrentCube != null)
 					MovingCube.CurrentCube.Stop();
@@ -29,7 +37,35 @@ public class GameManager : MonoBehaviour
 
 				currentSpawner.SpawnCube();
 				OnCubeSpawned();
+
+				//Test For Placement Zones
+				/*
+				
+				get ingredient object
+				reference PlacementZoneCheck.difference
+				if (difference <= perf)
+				{
+					
+					run snap function
+					
+				}
+				else if (difference >= miss)
+				{
+					missCount++;
+				}
+				else
+				{
+
+				}
+				
+				
+				 
+				*/
 			}
 		}
     }
+
+
+
+
 }
