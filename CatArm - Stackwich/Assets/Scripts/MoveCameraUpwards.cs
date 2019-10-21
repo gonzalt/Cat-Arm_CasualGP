@@ -68,6 +68,7 @@ public class MoveCameraUpwards : MonoBehaviour
 
 				i = Random.Range(0, splats.Length);
 				Debug.Log(i);
+                //splats
 				//cameraHolder.transform.Translate(0, 0.1f * Time.deltaTime, 0);
 
 				//placedIngredient = false;
