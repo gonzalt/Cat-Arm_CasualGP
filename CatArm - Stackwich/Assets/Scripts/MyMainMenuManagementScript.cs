@@ -22,9 +22,9 @@ public class MyMainMenuManagementScript : MonoBehaviour
 		SceneManager.LoadScene("EndlessLevel");
 	}
 	
-	public void LoadLevelSelect()
+	public void LoadOptions()
 	{
-		SceneManager.LoadScene("LevelSelect");
+		SceneManager.LoadScene("Options");
 	}
 	
 	public void LoadCredits()
@@ -36,10 +36,13 @@ public class MyMainMenuManagementScript : MonoBehaviour
 	{
 		SceneManager.LoadScene("MainMenu");
 	}
-	
-	
-	
-	
-	
-	
+
+	public void QuitTheGame()
+	{
+		Application.Quit();
+	}
+
+
+
+
 }
