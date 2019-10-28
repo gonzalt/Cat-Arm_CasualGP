@@ -9,7 +9,7 @@ public class PlacementZoneCheck : MonoBehaviour
 	public Vector3 centerLine;
 	public float difference;
 
-	public 
+	public string currentPlacement;
 
 
 	// Start is called before the first frame update
@@ -17,7 +17,7 @@ public class PlacementZoneCheck : MonoBehaviour
     {
 
 		centerLine = GameObject.Find("Start").transform.position;
-
+		currentPlacement = " ";
 
 	}
 
@@ -37,22 +37,50 @@ public class PlacementZoneCheck : MonoBehaviour
 		placementOfIng = gameObject.transform.position;
 
 		/*
+		
+		// check tag first
+
 		if ( right ing )
 		{
 
 			difference = Math.Abs(centerLine.x - placementOfIng.x);
 
+			if (difference <= .15f)
+			{
+				currentPlacement = "Perfect";
+			}
+			if (difference > .5f)
+			{
+				currentPlacement = "Miss";
+			}
+			else
+			{
+				currentPlacement = "Good";
+			}
 		}
 		else if (left ing)
 		{
 
 			difference = Math.Abs(centerLine.z - placementOfIng.z);
 
+			if (difference <= .15f)
+			{
+				currentPlacement = "Perfect";
+			}
+			if (difference > .5f)
+			{
+				currentPlacement = "Miss";
+			}
+			else
+			{
+				currentPlacement = "Good";
+			}
+
 		}
 
-
-
-
+		//
+		//Run SplatSound, PlayPlacementSFX Function
+		//PlayPlacementSFX(currentPlacement);
 
 
 
