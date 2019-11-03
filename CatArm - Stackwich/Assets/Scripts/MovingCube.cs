@@ -10,7 +10,8 @@ public class MovingCube : MonoBehaviour
     public static MovingCube LastCube { get; private set; }
     public MoveDirection MoveDirection { get; set; }
 
-
+	public GameObject referenceGO;
+	public GameManager gameManagerScript;
 
 	[SerializeField]
     private float moveSpeed = 1f;
@@ -20,6 +21,9 @@ public class MovingCube : MonoBehaviour
 
 	private void OnEnable()
     {
+		referenceGO = GameObject.Find("Start");
+		gameManagerScript = referenceGO.GetComponent<GameManager>();
+
         if (LastCube == null)
             LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
 
@@ -50,15 +54,15 @@ public class MovingCube : MonoBehaviour
 
 
 			
-			GameManager.missCount++;
+			gameManagerScript.missCount++;
 
 
-			if (GameManager.missCount >= 3)
+			if (gameManagerScript.missCount >= 3)
 			{
 				LastCube = null;
 				CurrentCube = null;
 
-				//SceneManager.LoadScene(0);
+				SceneManager.LoadScene(0);
 			}
 			
 

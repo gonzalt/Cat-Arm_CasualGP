@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
 
 
-	public static int missCount;
+	public int missCount;
 
 
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 					//LastCube = null;
 					//CurrentCube = null;
 
-					SceneManager.LoadScene(0);
+					//SceneManager.LoadScene(0);
 				}
 
 				spawnerIndex = spawnerIndex == 0 ? 1 : 0;
