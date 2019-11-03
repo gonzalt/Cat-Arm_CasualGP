@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class GameManager : MonoBehaviour
 
 
 
-	//public int missCount = 0;
+	public static int missCount;
 
 
 
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
 	private void Awake()
     {
         spawners = FindObjectsOfType<CubeSpawner>();
+		missCount = 0;
     }
 
     private void Update()
@@ -30,7 +33,17 @@ public class GameManager : MonoBehaviour
 			if (someScriptHolder.gameIsPaused == false)
 			{
 				if (MovingCube.CurrentCube != null)
+				{
 					MovingCube.CurrentCube.Stop();
+				}
+
+				if (missCount >= 3)
+				{
+					//LastCube = null;
+					//CurrentCube = null;
+
+					SceneManager.LoadScene(0);
+				}
 
 				spawnerIndex = spawnerIndex == 0 ? 1 : 0;
 				currentSpawner = spawners[spawnerIndex];

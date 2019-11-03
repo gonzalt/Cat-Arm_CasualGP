@@ -10,11 +10,12 @@ public class MovingCube : MonoBehaviour
     public static MovingCube LastCube { get; private set; }
     public MoveDirection MoveDirection { get; set; }
 
-    [SerializeField]
+
+
+	[SerializeField]
     private float moveSpeed = 1f;
 
 
-	public int missCount = 0;
 
 
 	private void OnEnable()
@@ -26,8 +27,8 @@ public class MovingCube : MonoBehaviour
         GetComponent<Renderer>().material.color = GetRandomColor();
 
 		//Changes Scale of Spawned Cube?
-		//transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
-		transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+		transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
+		//transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
 	}
 
     private Color GetRandomColor()
@@ -40,26 +41,33 @@ public class MovingCube : MonoBehaviour
         moveSpeed = 0;
         float hangover = GetHangover();
 
-        float max = MoveDirection == MoveDirection.z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
-        if (Mathf.Abs(hangover) >= max)
+        //float max = MoveDirection == MoveDirection.z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
+		float max = 0.5f;
+		if (Mathf.Abs(hangover) >= max)
         {
             //LastCube = null;
             //CurrentCube = null;
 
-			missCount++;
+
+			
+			GameManager.missCount++;
 
 
-			if (missCount >= 3)
+			if (GameManager.missCount >= 3)
 			{
 				LastCube = null;
 				CurrentCube = null;
 
-				SceneManager.LoadScene(0);
+				//SceneManager.LoadScene(0);
 			}
-
+			
 
 			//Load Main Menu
 			//SceneManager.LoadScene(0);
+		}
+		else
+		{
+			//LastCube = this;
 		}
 
         float direction = hangover > 0 ? 1f : -1f;
