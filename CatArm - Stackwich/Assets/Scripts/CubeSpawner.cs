@@ -18,10 +18,13 @@ public class CubeSpawner : MonoBehaviour
             float x = moveDirection == MoveDirection.x ? transform.position.x : MovingCube.LastCube.transform.position.x;
             float z = moveDirection == MoveDirection.z ? transform.position.z : MovingCube.LastCube.transform.position.z;
 
-            cube.transform.position = new Vector3(x,
+            /*cube.transform.position = new Vector3(x,
                 MovingCube.LastCube.transform.position.y + cubePrefab.transform.localScale.y,
-                z);
-        }
+                z);*/
+			cube.transform.position = new Vector3(x,
+				MovingCube.LastCube.transform.position.y + cubePrefab.transform.localScale.y,
+				z);
+		}
         else
         {
             cube.transform.position = transform.position;
