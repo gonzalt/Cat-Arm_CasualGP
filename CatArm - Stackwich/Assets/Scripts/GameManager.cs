@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
 
 
-	public int missCount = 0;
+	//public int missCount = 0;
 
 
 

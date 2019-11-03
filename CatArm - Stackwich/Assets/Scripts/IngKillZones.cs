@@ -22,7 +22,7 @@ public class IngKillZones : MonoBehaviour
     }
 
 
-	void OnCollisionEnter(Collider col)
+	void OnCollisionEnter(Collision col)
 	{
 		Destroy(col.gameObject);
 	}

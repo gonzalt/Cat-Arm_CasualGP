@@ -13,7 +13,11 @@ public class MovingCube : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 1f;
 
-    private void OnEnable()
+
+	public int missCount = 0;
+
+
+	private void OnEnable()
     {
         if (LastCube == null)
             LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
@@ -21,8 +25,10 @@ public class MovingCube : MonoBehaviour
         CurrentCube = this;
         GetComponent<Renderer>().material.color = GetRandomColor();
 
-        transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
-    }
+		//Changes Scale of Spawned Cube?
+		//transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
+		transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+	}
 
     private Color GetRandomColor()
     {
@@ -37,18 +43,33 @@ public class MovingCube : MonoBehaviour
         float max = MoveDirection == MoveDirection.z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
         if (Mathf.Abs(hangover) >= max)
         {
-            LastCube = null;
-            CurrentCube = null;
-            SceneManager.LoadScene(0);
-        }
+            //LastCube = null;
+            //CurrentCube = null;
+
+			missCount++;
+
+
+			if (missCount >= 3)
+			{
+				LastCube = null;
+				CurrentCube = null;
+
+				SceneManager.LoadScene(0);
+			}
+
+
+			//Load Main Menu
+			//SceneManager.LoadScene(0);
+		}
 
         float direction = hangover > 0 ? 1f : -1f;
 
+		/*
         if (MoveDirection == MoveDirection.z)
             SplitCubeOnZ(hangover, direction);
         else
             SplitCubeOnX(hangover, direction);
-
+			*/
         LastCube = this;
     }
 
@@ -73,7 +94,8 @@ public class MovingCube : MonoBehaviour
         float cubeEdge = transform.position.x + (newXSize / 2f * direction);
         float fallingBlockXPosition = cubeEdge + fallingBlockSize / 2f * direction;
 
-        SpawnDropCube(fallingBlockXPosition, fallingBlockSize);
+		//Spawn Overhang Cube
+        //SpawnDropCube(fallingBlockXPosition, fallingBlockSize);
     }
 
     private void SplitCubeOnZ(float hangover, float direction)
@@ -88,7 +110,8 @@ public class MovingCube : MonoBehaviour
         float cubeEdge = transform.position.z + (newZSize / 2f * direction);
         float fallingBlockZPosition = cubeEdge + fallingBlockSize / 2f * direction;
 
-        SpawnDropCube(fallingBlockZPosition, fallingBlockSize);
+		//Spawn Overhang Cube
+        //SpawnDropCube(fallingBlockZPosition, fallingBlockSize);
     }
 
     private void SpawnDropCube(float fallingBlockZPosition, float fallingBlockSize)
