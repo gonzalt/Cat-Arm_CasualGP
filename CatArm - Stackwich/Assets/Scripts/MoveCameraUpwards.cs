@@ -59,7 +59,6 @@ public class MoveCameraUpwards : MonoBehaviour
 	void Update()
 	{
 
-		if (Input.GetButtonDown("Fire1"))
 		if (Input.GetButtonDown("Fire1") )
 		{
 
