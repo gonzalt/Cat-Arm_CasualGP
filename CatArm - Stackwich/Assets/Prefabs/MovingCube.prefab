@@ -104,4 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d21a5fba20feb499ffdeadb676565b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  referenceGO: {fileID: 0}
+  gameManagerScript: {fileID: 0}
+  assetsList: {fileID: 0}
+  ingChoice: 0
   moveSpeed: 1

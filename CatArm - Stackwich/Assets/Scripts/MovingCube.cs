@@ -16,6 +16,12 @@ public class MovingCube : MonoBehaviour
 	public GameObject assetsList;
 	public int ingChoice;
 
+	private bool recalculateNormals = false;
+	private Vector3[] baseVertices;
+
+	public GameObject soundGO;
+	public SplatSound soundScript;
+
 	[SerializeField]
     private float moveSpeed = 1f;
 
@@ -27,15 +33,45 @@ public class MovingCube : MonoBehaviour
 		referenceGO = GameObject.Find("GameManager");
 		gameManagerScript = referenceGO.GetComponent<GameManager>();
 
+		soundGO = GameObject.Find("SoundManager");
+		soundScript = soundGO.GetComponent<SplatSound>();
+
 		assetsList = GameObject.Find("AssetsHolder");
-		ingChoice = UnityEngine.Random.Range(0, 11);
+		ingChoice = UnityEngine.Random.Range(0, 12);
 
 		if (LastCube == null)
-            LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
+			LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
+		else
+		{
+			CurrentCube = this;
+			GetComponent<Renderer>().material = assetsList.transform.GetChild(ingChoice).gameObject.GetComponent<Renderer>().material;
+			GetComponent<MeshFilter>().mesh = assetsList.transform.GetChild(ingChoice).gameObject.GetComponent<MeshFilter>().mesh;
 
-        CurrentCube = this;
-		GetComponent<Renderer>().material = assetsList.transform.GetChild(ingChoice).gameObject.GetComponent<Renderer>().material;
 
+			if (baseVertices == null)
+				baseVertices = GetComponent<MeshFilter>().mesh.vertices;
+
+			var vertices = new Vector3[baseVertices.Length];
+
+			for (var i = 0; i < vertices.Length; i++)
+			{
+				var vertex = baseVertices[i];
+				vertex.x = vertex.x * 1;
+				vertex.y = vertex.y * 10;
+				vertex.z = vertex.z * 1;
+
+				vertices[i] = vertex;
+			}
+
+			GetComponent<MeshFilter>().mesh.vertices = vertices;
+
+			if (recalculateNormals)
+			{
+				GetComponent<MeshFilter>().mesh.RecalculateNormals();
+				GetComponent<MeshFilter>().mesh.RecalculateBounds();
+			}
+
+		}
 		//Changes Scale of Spawned Cube?
 		transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
 		//transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -51,12 +87,37 @@ public class MovingCube : MonoBehaviour
         moveSpeed = 0;
         float hangover = GetHangover();
 
-        //float max = MoveDirection == MoveDirection.z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
+		int assetNumber = ingChoice + 1;
+		string placeType = " ";
+
+		if ( assetNumber == 1 || assetNumber == 2 || assetNumber == 4 || assetNumber == 6 || assetNumber == 7 || assetNumber == 9 || assetNumber == 11)
+		{
+			placeType = "Good";
+			//soundScript.PlayPlacementSFX("Perfect");
+
+			if (Mathf.Abs(hangover) <= .15)
+			{
+				placeType = "Perfect";
+			}
+		}
+		if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12)
+		{
+			placeType = "Inedible";
+			//soundScript.PlayPlacementSFX("Perfect");
+		}
+
+		
+		//float max = MoveDirection == MoveDirection.z ? LastCube.transform.localScale.z : LastCube.transform.localScale.x;
 		float max = 0.5f;
 		if (Mathf.Abs(hangover) >= max)
         {
 			//LastCube = null;
 			//CurrentCube = null;
+			if (assetNumber == 1 || assetNumber == 2 || assetNumber == 4 || assetNumber == 6 || assetNumber == 7 || assetNumber == 9 || assetNumber == 11)
+			{
+				placeType = "Miss";
+				//soundScript.PlayPlacementSFX("Perfect");
+			}
 
 			Debug.Log(gameManagerScript.missCount);
 			
@@ -80,7 +141,10 @@ public class MovingCube : MonoBehaviour
 			//LastCube = this;
 		}
 
-        float direction = hangover > 0 ? 1f : -1f;
+		soundScript.PlayPlacementSFX(placeType);
+
+
+		float direction = hangover > 0 ? 1f : -1f;
 
 		/*
         if (MoveDirection == MoveDirection.z)

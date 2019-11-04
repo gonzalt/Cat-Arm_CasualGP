@@ -10,11 +10,14 @@ public class SplatSound : MonoBehaviour
 	public AudioClip inedibleSound;
 	public AudioClip goldSound;
 
+	public AudioSource SFXAudio;
+	/*
 	public AudioSource goodSFX;
 	public AudioSource perfectSFX;
 	public AudioSource missSFX;
 	public AudioSource inedibleSFX;
 	public AudioSource goldSFX;
+	*/
 
 	public string placementType;
 
@@ -23,11 +26,15 @@ public class SplatSound : MonoBehaviour
 	{
 		placementType = " ";
 
+		SFXAudio = GetComponent<AudioSource>();
+
+		/*
 		goodSFX.clip = goodSound;
 		perfectSFX.clip = perfectSound;
 		missSFX.clip = missSound;
 		inedibleSFX.clip = inedibleSound;
 		goldSFX.clip = goldSound;
+		*/
 
 	}
 
@@ -44,23 +51,33 @@ public class SplatSound : MonoBehaviour
 		{
 
 			case "Perfect":
-				perfectSFX.Play();
+				SFXAudio.clip = perfectSound;
+				SFXAudio.Play();
+				//perfectSFX.Play();
 				break;
 
 			case "Good":
-				goodSFX.Play();
+				SFXAudio.clip = goodSound;
+				SFXAudio.Play();
+				//goodSFX.Play();
 				break;
 
 			case "Miss":
-				missSFX.Play();
+				SFXAudio.clip = missSound;
+				SFXAudio.Play();
+				//missSFX.Play();
 				break;
 
 			case "Inedible":
-				inedibleSFX.Play();
+				SFXAudio.clip = inedibleSound;
+				SFXAudio.Play();
+				//inedibleSFX.Play();
 				break;
 
 			case "Golden":
-				goldSFX.Play();
+				SFXAudio.clip = goldSound;
+				SFXAudio.Play();
+				//goldSFX.Play();
 				break;
 
 

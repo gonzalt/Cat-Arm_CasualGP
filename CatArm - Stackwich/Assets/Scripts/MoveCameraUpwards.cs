@@ -14,6 +14,7 @@ public class MoveCameraUpwards : MonoBehaviour
 
 	public GameObject cameraHolder;
 
+	/*
     public AudioClip placeClipOne;
     public AudioClip placeClipTwo;
     public AudioClip placeClipThree;
@@ -25,8 +26,9 @@ public class MoveCameraUpwards : MonoBehaviour
     public AudioSource placeSourceFour;
 
     public AudioSource[] splats = new AudioSource[3];
+	*/
 
-    public int i = 0;
+    //public int i = 0;
 
 	public PauseMenuScript someScriptHolder;
 
@@ -37,6 +39,7 @@ public class MoveCameraUpwards : MonoBehaviour
 	{
 		cameraHolder = GameObject.Find("CameraForSandwich");
 
+		/*
         placeSourceOne.clip = placeClipOne;
         placeSourceTwo.clip = placeClipTwo;
         placeSourceThree.clip = placeClipThree;
@@ -46,6 +49,7 @@ public class MoveCameraUpwards : MonoBehaviour
         splats[1] = placeSourceTwo;
         splats[2] = placeSourceThree;
         splats[3] = placeSourceFour;
+		*/
 
     }
 
@@ -66,7 +70,7 @@ public class MoveCameraUpwards : MonoBehaviour
 
 				var random = new Random();
 
-				i = Random.Range(0, splats.Length);
+				//i = Random.Range(0, splats.Length);
 				//Debug.Log(i);
                 //splats
 				//cameraHolder.transform.Translate(0, 0.1f * Time.deltaTime, 0);
