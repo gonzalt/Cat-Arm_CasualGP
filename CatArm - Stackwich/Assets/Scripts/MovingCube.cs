@@ -23,7 +23,6 @@ public class MovingCube : MonoBehaviour
 	public SplatSound soundScript;
 
 	[SerializeField]
-    private float moveSpeed = 5f;
 
 
 
