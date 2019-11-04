@@ -60,6 +60,7 @@ public class MoveCameraUpwards : MonoBehaviour
 	{
 
 		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetButtonDown("Fire1") )
 		{
 
 			if (someScriptHolder.gameIsPaused == false)
