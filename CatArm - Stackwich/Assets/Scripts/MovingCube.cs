@@ -13,6 +13,9 @@ public class MovingCube : MonoBehaviour
 	public GameObject referenceGO;
 	public GameManager gameManagerScript;
 
+	public GameObject assetsList;
+	public int ingChoice;
+
 	[SerializeField]
     private float moveSpeed = 1f;
 
@@ -24,11 +27,14 @@ public class MovingCube : MonoBehaviour
 		referenceGO = GameObject.Find("GameManager");
 		gameManagerScript = referenceGO.GetComponent<GameManager>();
 
-        if (LastCube == null)
+		assetsList = GameObject.Find("AssetsHolder");
+		ingChoice = UnityEngine.Random.Range(0, 11);
+
+		if (LastCube == null)
             LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
 
         CurrentCube = this;
-        GetComponent<Renderer>().material.color = GetRandomColor();
+		GetComponent<Renderer>().material = assetsList.transform.GetChild(ingChoice).gameObject.GetComponent<Renderer>().material;
 
 		//Changes Scale of Spawned Cube?
 		transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
