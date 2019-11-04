@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 			{
 				if (MovingCube.CurrentCube != null)
 				{
+
 					MovingCube.CurrentCube.Stop();
 					
 				}

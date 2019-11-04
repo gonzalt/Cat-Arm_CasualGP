@@ -116,12 +116,20 @@ public class MovingCube : MonoBehaviour
 			if (assetNumber == 1 || assetNumber == 2 || assetNumber == 4 || assetNumber == 6 || assetNumber == 7 || assetNumber == 9 || assetNumber == 11)
 			{
 				placeType = "Miss";
+
+				//soundScript.PlayPlacementSFX("Perfect");
+
+				gameManagerScript.missCount = gameManagerScript.missCount + 1;
+				Debug.Log(gameManagerScript.missCount);
+			}
+			if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12)
+			{
+				placeType = " ";
 				//soundScript.PlayPlacementSFX("Perfect");
 			}
-
-			Debug.Log(gameManagerScript.missCount);
+			//Debug.Log(gameManagerScript.missCount);
 			
-			gameManagerScript.missCount = gameManagerScript.missCount + 1;
+			//gameManagerScript.missCount = gameManagerScript.missCount + 1;
 
 			
 			if (gameManagerScript.missCount >= 3)
@@ -138,7 +146,14 @@ public class MovingCube : MonoBehaviour
 		}
 		else
 		{
-			//LastCube = this;
+			if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12)
+			{
+				gameManagerScript.missCount = gameManagerScript.missCount + 1;
+				Debug.Log(gameManagerScript.missCount);
+
+			}
+
+			LastCube = this;
 		}
 
 		soundScript.PlayPlacementSFX(placeType);
@@ -152,7 +167,7 @@ public class MovingCube : MonoBehaviour
         else
             SplitCubeOnX(hangover, direction);
 			*/
-        LastCube = this;
+        //LastCube = this;
     }
 
     private float GetHangover()
