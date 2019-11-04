@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
 
 	public int missCount;
+	public GameObject loseScreen;
 
 
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
 				if (MovingCube.CurrentCube != null)
 				{
 					MovingCube.CurrentCube.Stop();
+					
 				}
 
 				if (missCount >= 3)
@@ -43,14 +45,17 @@ public class GameManager : MonoBehaviour
 					//CurrentCube = null;
 
 					//SceneManager.LoadScene(0);
+
+					loseScreen.SetActive(true);
 				}
+				else
+				{
+					spawnerIndex = spawnerIndex == 0 ? 1 : 0;
+					currentSpawner = spawners[spawnerIndex];
 
-				spawnerIndex = spawnerIndex == 0 ? 1 : 0;
-				currentSpawner = spawners[spawnerIndex];
-
-				currentSpawner.SpawnCube();
-				OnCubeSpawned();
-
+					currentSpawner.SpawnCube();
+					OnCubeSpawned();
+				}
 				//Test For Placement Zones
 				/*
 				

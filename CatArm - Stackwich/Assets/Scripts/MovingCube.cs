@@ -21,7 +21,7 @@ public class MovingCube : MonoBehaviour
 
 	private void OnEnable()
     {
-		referenceGO = GameObject.Find("Start");
+		referenceGO = GameObject.Find("GameManager");
 		gameManagerScript = referenceGO.GetComponent<GameManager>();
 
         if (LastCube == null)
@@ -49,20 +49,20 @@ public class MovingCube : MonoBehaviour
 		float max = 0.5f;
 		if (Mathf.Abs(hangover) >= max)
         {
-            //LastCube = null;
-            //CurrentCube = null;
+			//LastCube = null;
+			//CurrentCube = null;
 
+			Debug.Log(gameManagerScript.missCount);
+			
+			gameManagerScript.missCount = gameManagerScript.missCount + 1;
 
 			
-			gameManagerScript.missCount++;
-
-
 			if (gameManagerScript.missCount >= 3)
 			{
 				LastCube = null;
 				CurrentCube = null;
 
-				SceneManager.LoadScene(0);
+				//SceneManager.LoadScene(0);
 			}
 			
 
