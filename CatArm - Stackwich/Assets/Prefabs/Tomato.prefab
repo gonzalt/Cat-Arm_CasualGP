@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5080449714600466717}
   - component: {fileID: 4312870257542947627}
   - component: {fileID: 7558990490452500434}
-  - component: {fileID: -5428271265534699883}
+  - component: {fileID: 7428292781611835423}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &-5428271265534699883
+--- !u!65 &7428292781611835423
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,5 +89,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2999.9998, y: 299.99997, z: 2999.9998}
+  m_Size: {x: 0.9999, y: 0.099989995, z: 0.9999}
   m_Center: {x: 0, y: 0, z: 0}

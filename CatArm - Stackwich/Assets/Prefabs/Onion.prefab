@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4631044522325508709}
   - component: {fileID: 4404450942912837715}
   - component: {fileID: 7936267922958173354}
-  - component: {fileID: -6117294550300205025}
+  - component: {fileID: 3903067085995916983}
   m_Layer: 0
   m_Name: Onion
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8511697381898449014}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1.67, y: 1.67, z: 1.67}
   m_Children: []
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &-6117294550300205025
+--- !u!65 &3903067085995916983
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,5 +89,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5999999, y: 0.059999995, z: 0.5999999}
+  m_Size: {x: 1.0019999, y: 0.10019999, z: 1.0019999}
   m_Center: {x: 0, y: 0, z: 0}

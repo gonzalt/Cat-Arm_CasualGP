@@ -72,8 +72,9 @@ public class MovingCube : MonoBehaviour
 
 		}
 		//Changes Scale of Spawned Cube?
-		transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
-		//transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+		//transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
+		//transform.localScale = new Vector3(x: 1f, y: 0.1f, z: 1f);
+		transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
 	}
 
     private Color GetRandomColor()

@@ -108,4 +108,6 @@ MonoBehaviour:
   gameManagerScript: {fileID: 0}
   assetsList: {fileID: 0}
   ingChoice: 0
-  moveSpeed: 1
+  soundGO: {fileID: 0}
+  soundScript: {fileID: 0}
+  moveSpeed: 2
