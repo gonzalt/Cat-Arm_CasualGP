@@ -36,7 +36,7 @@ public class MovingCube : MonoBehaviour
 		soundScript = soundGO.GetComponent<SplatSound>();
 
 		assetsList = GameObject.Find("AssetsHolder");
-		ingChoice = UnityEngine.Random.Range(0, 12);
+		ingChoice = UnityEngine.Random.Range(0, 13);
 
 		if (LastCube == null)
 			LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
@@ -100,7 +100,7 @@ public class MovingCube : MonoBehaviour
 				placeType = "Perfect";
 			}
 		}
-		if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12)
+		if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12 || assetNumber == 13)
 		{
 			placeType = "Inedible";
 			//soundScript.PlayPlacementSFX("Perfect");
@@ -122,7 +122,7 @@ public class MovingCube : MonoBehaviour
 				gameManagerScript.missCount = gameManagerScript.missCount + 1;
 				Debug.Log(gameManagerScript.missCount);
 			}
-			if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12)
+			if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12 || assetNumber == 13)
 			{
 				placeType = " ";
 				//soundScript.PlayPlacementSFX("Perfect");
@@ -146,7 +146,7 @@ public class MovingCube : MonoBehaviour
 		}
 		else
 		{
-			if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12)
+			if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12 || assetNumber == 13)
 			{
 				gameManagerScript.missCount = gameManagerScript.missCount + 1;
 				Debug.Log(gameManagerScript.missCount);

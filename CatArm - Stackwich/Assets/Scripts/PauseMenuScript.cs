@@ -10,6 +10,8 @@ public class PauseMenuScript : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+	public GameObject pauseButton;
+
 
 
 
@@ -42,6 +44,7 @@ public class PauseMenuScript : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+		pauseButton.SetActive(true);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
@@ -49,7 +52,8 @@ public class PauseMenuScript : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+		pauseButton.SetActive(false);
+		Time.timeScale = 0f;
         gameIsPaused = true;
     }
 
