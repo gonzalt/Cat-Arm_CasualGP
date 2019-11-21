@@ -13,13 +13,13 @@ public class PauseMenuScript : MonoBehaviour
 	public GameObject pauseButton;
 
 
+	private bool gameStarted;
 
-
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
-        
-    }
+		gameStarted = false;
+	}
 
     // Update is called once per frame
     void Update()
@@ -37,8 +37,17 @@ public class PauseMenuScript : MonoBehaviour
             }
         }
 
+		if (Input.GetButtonDown("Fire1"))
+		{
+			if (gameStarted == false)
+			{
+				enablePause();
+			}
+		}
 
-    }
+
+
+	}
 
 
     public void Resume()
@@ -58,7 +67,15 @@ public class PauseMenuScript : MonoBehaviour
     }
 
 
-    public void LoadMenu()
+	private void enablePause()
+	{
+		pauseButton.SetActive(true);
+		gameStarted = true;
+	}
+
+
+
+	public void LoadMenu()
     {
         Debug.Log("Loading Menu...");
     }

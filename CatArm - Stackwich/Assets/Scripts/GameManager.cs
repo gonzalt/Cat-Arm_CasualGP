@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 	public int missCount;
 	public GameObject loseScreen;
 
-
+	
 
 
 	private void Awake()
@@ -29,8 +29,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
 		if (Input.GetButtonDown("Fire1"))
 		{
+			
+
 			if (someScriptHolder.gameIsPaused == false)
 			{
 				if (MovingCube.CurrentCube != null)
@@ -83,6 +86,8 @@ public class GameManager : MonoBehaviour
 			}
 		}
     }
+
+	
 
 
 
