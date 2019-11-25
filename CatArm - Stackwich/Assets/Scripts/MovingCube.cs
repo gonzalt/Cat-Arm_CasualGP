@@ -98,7 +98,12 @@ public class MovingCube : MonoBehaviour
 			if (Mathf.Abs(hangover) <= .15)
 			{
 				placeType = "Perfect";
+				//this.transform.position.x = 0;
+				float thisCubesYCoor = this.transform.position.y;
+				transform.position = new Vector3(0, thisCubesYCoor, 0);
+
 			}
+
 		}
 		if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12 || assetNumber == 13)
 		{
