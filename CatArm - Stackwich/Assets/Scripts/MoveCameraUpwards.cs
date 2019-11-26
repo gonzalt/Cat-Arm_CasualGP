@@ -58,7 +58,7 @@ public class MoveCameraUpwards : MonoBehaviour
 
 	void Update()
 	{
-
+		/*
 		if (Input.GetButtonDown("Fire1") )
 		{
 
@@ -80,10 +80,35 @@ public class MoveCameraUpwards : MonoBehaviour
 			
 
 		}
-	
+		*/
 	}
 
 
+	 
+	public void MoveTheCamera()
+	{
+		if (someScriptHolder.gameIsPaused == false)
+			{
+				startPosition = startPosition + aimedPosition;
+
+				cameraHolder.transform.position = startPosition;
+
+				var random = new Random();
+
+				//i = Random.Range(0, splats.Length);
+				//Debug.Log(i);
+                //splats
+				//cameraHolder.transform.Translate(0, 0.1f * Time.deltaTime, 0);
+
+				//placedIngredient = false;
+			}
+
+	}
+
+
+
+
+	 
 
 
 

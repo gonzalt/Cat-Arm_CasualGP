@@ -22,6 +22,9 @@ public class MovingCube : MonoBehaviour
 	public GameObject soundGO;
 	public SplatSound soundScript;
 
+	public GameObject cameraHolderGO;
+	public MoveCameraUpwards cameraScript;
+
 	[SerializeField]
 	private float moveSpeed = 1f;
 
@@ -37,6 +40,9 @@ public class MovingCube : MonoBehaviour
 
 		assetsList = GameObject.Find("AssetsHolder");
 		ingChoice = UnityEngine.Random.Range(0, 13);
+
+		cameraHolderGO = GameObject.Find("CameraHolder");
+		cameraScript = cameraHolderGO.GetComponent<MoveCameraUpwards>();
 
 		if (LastCube == null)
 			LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
@@ -188,6 +194,11 @@ public class MovingCube : MonoBehaviour
 		}
 
 		soundScript.PlayPlacementSFX(placeType);
+
+		if (Mathf.Abs(hangover) < max)
+		{
+			cameraScript.MoveTheCamera();
+		}
 
 
 		float direction = hangover > 0 ? 1f : -1f;
