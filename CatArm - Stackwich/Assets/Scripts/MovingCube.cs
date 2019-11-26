@@ -126,6 +126,9 @@ public class MovingCube : MonoBehaviour
 
 				gameManagerScript.missCount = gameManagerScript.missCount + 1;
 				Debug.Log(gameManagerScript.missCount);
+
+				
+
 			}
 			if (assetNumber == 3 || assetNumber == 5 || assetNumber == 8 || assetNumber == 10 || assetNumber == 12 || assetNumber == 13)
 			{
@@ -133,10 +136,33 @@ public class MovingCube : MonoBehaviour
 				//soundScript.PlayPlacementSFX("Perfect");
 			}
 			//Debug.Log(gameManagerScript.missCount);
-			
-			//gameManagerScript.missCount = gameManagerScript.missCount + 1;
 
-			
+			//gameManagerScript.missCount = gameManagerScript.missCount + 1;
+			Rigidbody rgdBdy = this.gameObject.AddComponent<Rigidbody>() as Rigidbody;
+			//Vector3 position = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, Random.Range(-10.0f, 10.0f));
+			float directionMultiplierOne = 1.0f;
+			float directionMultiplierTwo = 1.0f;
+
+			if (UnityEngine.Random.value < 0.5f)
+			{
+				directionMultiplierOne = 1.0f;
+			}
+			else
+			{
+				directionMultiplierOne = -1.0f;
+			}
+			if (UnityEngine.Random.value < 0.5f)
+			{
+				directionMultiplierTwo = 1.0f;
+			}
+			else
+			{
+				directionMultiplierTwo = -1.0f;
+			}
+
+
+			rgdBdy.AddForce(new Vector3 (UnityEngine.Random.Range(50.0f, 100.0f) * directionMultiplierOne, 10.0f, UnityEngine.Random.Range(50.0f, 100.0f) * directionMultiplierTwo) *10);
+
 			if (gameManagerScript.missCount >= 3)
 			{
 				LastCube = null;
