@@ -2914,7 +2914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6312752cb8026df489a55fd7e6a19c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloudSpawnRate: 0.3
+  cloudSpawnRate: 2
   cloudPrefab: {fileID: 1230849269}
 --- !u!1 &1342876299
 GameObject:
