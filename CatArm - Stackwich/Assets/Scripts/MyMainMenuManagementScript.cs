@@ -31,7 +31,12 @@ public class MyMainMenuManagementScript : MonoBehaviour
 	{
 		SceneManager.LoadScene("Credits");
 	}
-	
+
+	public void LoadHowTo()
+	{
+		SceneManager.LoadScene("HowTo");
+	}
+
 	public void LoadMainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
