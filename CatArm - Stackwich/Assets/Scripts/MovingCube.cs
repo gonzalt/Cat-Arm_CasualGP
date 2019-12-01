@@ -25,6 +25,11 @@ public class MovingCube : MonoBehaviour
 	public GameObject cameraHolderGO;
 	public MoveCameraUpwards cameraScript;
 
+	public GameObject scoreHolderGO;
+	public ScoreText scoreScript;
+
+	public bool stopped = false;
+
 	[SerializeField]
 	private float moveSpeed = 1f;
 
@@ -35,6 +40,8 @@ public class MovingCube : MonoBehaviour
 		referenceGO = GameObject.Find("GameManager");
 		gameManagerScript = referenceGO.GetComponent<GameManager>();
 
+		
+
 		soundGO = GameObject.Find("SoundManager");
 		soundScript = soundGO.GetComponent<SplatSound>();
 
@@ -44,6 +51,9 @@ public class MovingCube : MonoBehaviour
 		cameraHolderGO = GameObject.Find("CameraHolder");
 		cameraScript = cameraHolderGO.GetComponent<MoveCameraUpwards>();
 
+		scoreHolderGO = GameObject.Find("GameplayScreen").transform.GetChild(0).gameObject;
+		scoreScript = scoreHolderGO.GetComponent<ScoreText>();
+
 		if (LastCube == null)
 			LastCube = GameObject.Find("Start").GetComponent<MovingCube>();
 		else
@@ -52,6 +62,7 @@ public class MovingCube : MonoBehaviour
 			GetComponent<Renderer>().material = assetsList.transform.GetChild(ingChoice).gameObject.GetComponent<Renderer>().material;
 			GetComponent<MeshFilter>().mesh = assetsList.transform.GetChild(ingChoice).gameObject.GetComponent<MeshFilter>().mesh;
 
+			moveSpeed = gameManagerScript.cubeSpeed;
 
 			if (baseVertices == null)
 				baseVertices = GetComponent<MeshFilter>().mesh.vertices;
@@ -90,6 +101,8 @@ public class MovingCube : MonoBehaviour
 
     internal void Stop()
     {
+		stopped = true;
+
         moveSpeed = 0;
         float hangover = GetHangover();
 
@@ -194,6 +207,7 @@ public class MovingCube : MonoBehaviour
 		}
 
 		soundScript.PlayPlacementSFX(placeType);
+		scoreScript.ChangeScore(placeType);
 
 		if (Mathf.Abs(hangover) < max)
 		{
@@ -273,11 +287,14 @@ public class MovingCube : MonoBehaviour
         Destroy(cube.gameObject, 1f);
     }
 
-    private void Update()
-    {
-        if(MoveDirection == MoveDirection.z)
-            transform.position += transform.forward * Time.deltaTime * moveSpeed;
-        else
-            transform.position += transform.right * Time.deltaTime * moveSpeed;
+	private void Update()
+	{
+		if (stopped == false)
+		{
+			if (MoveDirection == MoveDirection.z)
+				transform.position += transform.forward * Time.deltaTime * moveSpeed;
+			else
+				transform.position += transform.right * Time.deltaTime * moveSpeed;
+		}
     }
 }

@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
 	public int missCount;
 	public GameObject loseScreen;
 
-	
 
+	public float cubeSpeed = 1.00f;
+	public float finalCubeSpeed = 3.0f;
 
 	private void Awake()
     {
@@ -59,6 +60,13 @@ public class GameManager : MonoBehaviour
 
 					currentSpawner.SpawnCube();
 					OnCubeSpawned();
+
+					if (cubeSpeed <= finalCubeSpeed)
+					{
+						cubeSpeed += 0.15f;
+					}
+
+					//MovingCube.moveSpeed = cubeSpeed;
 				}
 				//Test For Placement Zones
 				/*

@@ -553,6 +553,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &416788868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 416788871}
+  - component: {fileID: 416788870}
+  - component: {fileID: 416788869}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &416788869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416788868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec325246d6868d74f927184f6e052f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &416788870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416788868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10000, y: 10, z: 10000}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &416788871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416788868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &541523139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1365,7 +1422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goodSound: {fileID: 8300000, guid: 0786e152818c0cc44988079ab2089b36, type: 3}
-  perfectSound: {fileID: 8300000, guid: a9647396d5106624990387e7a9e1a2b7, type: 3}
+  perfectSound: {fileID: 8300000, guid: 9f066702dbd3ee148b6e1d6c849883f9, type: 3}
   missSound: {fileID: 8300000, guid: 0525064de344e3341a395957fd2ea14e, type: 3}
   inedibleSound: {fileID: 8300000, guid: 9a5a1d1f738e20c4eaea0d7628035775, type: 3}
   goldSound: {fileID: 8300000, guid: b4ab9b7cf7f8e23468b82460f43fc7c0, type: 3}
@@ -2973,6 +3030,8 @@ MonoBehaviour:
   someScriptHolder: {fileID: 913792575}
   missCount: 0
   loseScreen: {fileID: 660825736}
+  cubeSpeed: 1
+  finalCubeSpeed: 3
 --- !u!4 &1283553968
 Transform:
   m_ObjectHideFlags: 0
@@ -4266,6 +4325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0828463b0abf223409989d24df872dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goodScore: 1
+  perfectScore: 3
 --- !u!114 &1840691662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5280,6 +5341,9 @@ MonoBehaviour:
   soundScript: {fileID: 0}
   cameraHolderGO: {fileID: 0}
   cameraScript: {fileID: 0}
+  scoreHolderGO: {fileID: 0}
+  scoreScript: {fileID: 0}
+  stopped: 1
   moveSpeed: 0
 --- !u!1 &2046137104
 GameObject:

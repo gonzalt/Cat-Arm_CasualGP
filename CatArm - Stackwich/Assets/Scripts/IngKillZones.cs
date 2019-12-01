@@ -22,9 +22,10 @@ public class IngKillZones : MonoBehaviour
     }
 
 
-	void OnCollisionEnter(Collision col)
+	void OnCollisionEnter(Collision other)
 	{
-		Destroy(col.gameObject);
+		Destroy(other.gameObject);
+		Debug.Log("Hit");
 	}
 
 
