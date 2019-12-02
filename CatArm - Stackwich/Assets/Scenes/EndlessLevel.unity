@@ -3031,6 +3031,7 @@ MonoBehaviour:
   missCount: 0
   loseScreen: {fileID: 660825736}
   cubeSpeed: 1
+  speedIncrement: 0.15
   finalCubeSpeed: 3
 --- !u!4 &1283553968
 Transform:
