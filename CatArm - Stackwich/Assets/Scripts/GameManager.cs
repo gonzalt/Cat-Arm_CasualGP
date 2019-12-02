@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
 
 	public float cubeSpeed = 1.00f;
+	public float speedIncrement = 0.15f;
 	public float finalCubeSpeed = 3.0f;
 
 	private void Awake()
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 
 					if (cubeSpeed <= finalCubeSpeed)
 					{
-						cubeSpeed += 0.15f;
+						cubeSpeed += speedIncrement;
 					}
 
 					//MovingCube.moveSpeed = cubeSpeed;
@@ -94,6 +95,49 @@ public class GameManager : MonoBehaviour
 			}
 		}
     }
+
+
+
+
+	public void FakePlacement()
+	{
+		if (someScriptHolder.gameIsPaused == false)
+		{
+			if (MovingCube.CurrentCube != null)
+			{
+
+				MovingCube.CurrentCube.Stop();
+
+			}
+
+			if (missCount >= 3)
+			{
+				//LastCube = null;
+				//CurrentCube = null;
+
+				//SceneManager.LoadScene(0);
+
+				loseScreen.SetActive(true);
+			}
+			else
+			{
+				spawnerIndex = spawnerIndex == 0 ? 1 : 0;
+				currentSpawner = spawners[spawnerIndex];
+
+				currentSpawner.SpawnCube();
+				OnCubeSpawned();
+
+				if (cubeSpeed <= finalCubeSpeed)
+				{
+					cubeSpeed += speedIncrement;
+				}
+
+			}
+			
+		}
+
+
+	}
 
 	
 

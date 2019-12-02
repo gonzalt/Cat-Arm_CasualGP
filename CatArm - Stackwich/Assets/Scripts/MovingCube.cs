@@ -92,6 +92,9 @@ public class MovingCube : MonoBehaviour
 		//transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
 		//transform.localScale = new Vector3(x: 1f, y: 0.1f, z: 1f);
 		transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+		StartCoroutine(DespawnTimer());
+
 	}
 
     private Color GetRandomColor()
@@ -297,4 +300,22 @@ public class MovingCube : MonoBehaviour
 				transform.position += transform.right * Time.deltaTime * moveSpeed;
 		}
     }
+
+
+
+	IEnumerator DespawnTimer()
+	{
+		yield return new WaitForSeconds(3.5f);
+
+		if (stopped == false)
+		{
+			//Stop();
+			//Destroy(this.gameObject);
+			gameManagerScript.FakePlacement();
+			Destroy(this.gameObject);
+		}
+	}
+
+
+
 }
